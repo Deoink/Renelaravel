@@ -77,6 +77,41 @@
 </head>
 
 <body>
+<nav class="bg-blue-600 shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+        <!-- Logo -->
+        <a href="{{ url('/') }}" class="text-white text-2xl font-bold">
+            My Website
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="flex space-x-6">
+            <li>
+                <a href="{{ url('/') }}"
+                   class="text-white hover:text-gray-200 {{ request()->is('/') ? 'font-bold underline' : '' }}">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('/about') }}"
+                   class="text-white hover:text-gray-200 {{ request()->is('about') ? 'font-bold underline' : '' }}">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ url('/contact') }}"
+                   class="text-white hover:text-gray-200 {{ request()->is('contact') ? 'font-bold underline' : '' }}">
+                    Contact
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
     <header>
         <nav id="up">
             <tr>
