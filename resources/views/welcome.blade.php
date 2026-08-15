@@ -3,168 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black & White</title>,
-<style>
-     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
-      background-color: #FFFFFF; 
-      display: flexbox;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
-    
-     h1 {
-      font-weight: 600;
-      font-size: 32px;
-      margin-bottom: 10px;
-      color: #f10000; 
-      text-align: center;
-    }
 
-    .lyrics {
-      text-align: center;
-      white-space: pre-wrap;
-      font-size: 18px;
-      color: #000000;
-      line-height: 1.6;
-    }
+    <title>Black & White</title>
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 20px 25px;
-      }
-      h1 {
-        font-size: 26px;
-      }
-      h2 {
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-      .lyrics {
-        font-size: 16px;
-      }
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    header {
-        text-align: left;
-        padding: 20px 20px;
-        display: block;
-        background-color: rgb(198, 207, 216);
-        font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
-        font-size: 18px;
-        margin: auto;
-    }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+        }
 
-    img {
-        border-radius: 8px;
-        width: 20px;
-        height: 20px;
-    }
+        /* Navigation */
+        nav {
+            background-color: #111;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .arrow {
-        position: fixed;
-        border-radius: 6px;
-        width: 20px;
-        height: 20px;
-        right: 30px;
-        bottom: 30px;
-    }
-</style>
+        nav .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .container h1 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+
+        .container h2 {
+            color: #777;
+            font-weight: normal;
+        }
+
+        .song-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .lyrics {
+            white-space: pre-line;
+            line-height: 1.8;
+            color: #444;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #111;
+            color: #aaa;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 
 <body>
-<nav class="bg-blue-600 shadow-md">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
 
-        <!-- Logo -->
-        <a href="{{ url('/') }}" class="text-white text-2xl font-bold">
-            My Website
-        </a>
+    <!-- Navigation -->
+    <nav>
+        <a href="{{ url('/') }}" class="logo">BLACK & WHITE</a>
 
-        <!-- Navigation Links -->
-        <ul class="flex space-x-6">
+        <ul>
             <li>
-                <a href="{{ url('/') }}"
-                   class="text-white hover:text-gray-200 {{ request()->is('/') ? 'font-bold underline' : '' }}">
-                    Home
-                </a>
+                <a href="{{ url('/') }}">Home</a>
             </li>
 
             <li>
-                <a href="{{ url('/about') }}"
-                   class="text-white hover:text-gray-200 {{ request()->is('about') ? 'font-bold underline' : '' }}">
-                    About
-                </a>
+                <a href="{{ url('/about') }}">About</a>
             </li>
 
             <li>
-                <a href="{{ url('/contact') }}"
-                   class="text-white hover:text-gray-200 {{ request()->is('contact') ? 'font-bold underline' : '' }}">
-                    Contact
-                </a>
+                <a href="{{ url('/contact') }}">Contact</a>
             </li>
         </ul>
+    </nav>
 
-    </div>
-</nav>
 
-    <header>
-        <nav id="up">
-            <tr>
-                <th>
-                    <img class="img" src="lawdi.jpg" >
-                </th>
-                <th>BLACK & WHITE</th>
-            </tr>
-        </nav>
-    </header>
+    <!-- Main Content -->
     <div class="container">
+
         <h1>Black & White</h1>
         <h2>Dilaw</h2>
-        <div class="lyrics">  
+
+        <div class="lyrics">
+
             Ang buhay ko ay parang lumang TV na walang cable
             Kulay abo, laging malabo bawat lipat mo, walang channel
+
             At nang makita ka, nagliliwanag ang mga mata
-            Unti-unting nagkakakulay ang mundo, panteleserye ang dating, 'di ba?<br>
+            Unti-unting nagkakakulay ang mundo
+
             'Di makapaghunos-dili, baby
-            'Di makatulog ng swabe lately<br>
+            'Di makatulog ng swabe lately
+
             Hay, 'di ka nakakaumay
             Nagbibigay ng kulay
             Sa mundo kong black and white
-            Hay, 'di ka lubusang iniisip
-            Bakit hanggang sa panaginip?
-            Sana paggising ko, ikaw lamang ang katabi<br>
-            Ah, ah, ang katabi
-            Ah, ah, ang katabi
-            Ah, ah, ang<br>
-            Ang bawat oras na lumipas na 'di ka kapiling
-            Parang bagyo himpapawid, bigla na lang dumidilim
-            Gan'to ba talaga ang feeling 'pag biglang lumiliwanag?
-            'Yung dating utak na maulap, ngayon ay tila parang kendi na bula
-            Sabi ng isipan ko, oh, oh, oh, oh<br>
-            'Di makapaghunos-dili, baby
-            'Di makatulog ng swabe lately<br>
-            Hay, 'di ka nakakaumay
-            Nagbibigay ng kulay
-            Sa mundo kong black and white
-            Hay, 'di ka lubusang iniisip
-            Bakit hanggang sa panaginip?
-            Sana paggising ko, ikaw lamang ang katabi<br>
-            Ah, ah, ang katabi (Sa nakita ko)
-            Ah, ah, ang katabi (Ikaw ang katabi)
-            Ah, ah, ang black and white (Baby)
-            Ah, ah, ang katabi (Oh)
-            Ah, ah, ang katabi (Yeah)
-            Ah, ah, ang black and white
-            Ah, ah, ang<br>
+
         </div>
-    
-        <a href="#up">
-            <img class="arrow" src="arrow.png" alt="qwerty">
-        </a>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        © 2026 Black & White
+    </footer>
+
 </body>
 </html>
