@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
-use App\Http\Requests\StarProductRquest;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = auth()->user()->products()->latest()->get();
 
-        return view('products.index', [
-            'products' => $products
-        ]);
+        return view('products.index', compact('products'));
     }
 
     public function create()
@@ -21,15 +20,40 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store(StarProductRquest $request)
+    public function store(StoreProductRequest $request)
     {
-        Product::create($request->validated());
+        auth()->user()->products()->create($request->validated());
 
         return redirect()->route('products.index');
     }
 
+    public function show(Product $product)
+    {
+        $this->authorize('view', $product);
+
+        return view('products.show', compact('product'));
+    }
+
+    public function edit(Product $product)
+    {
+        $this->authorize('update', $product);
+
+        return view('products.edit', compact('product'));
+    }
+
+    public function update(UpdateProductRequest $request, Product $product)
+    {
+        $this->authorize('update', $product);
+
+        $product->update($request->validated());
+
+        return redirect()->route('products.show', $product);
+    }
+
     public function destroy(Product $product)
     {
+        $this->authorize('delete', $product);
+
         $product->delete();
 
         return redirect()->route('products.index');
